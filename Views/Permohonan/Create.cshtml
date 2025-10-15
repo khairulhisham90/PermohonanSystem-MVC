@@ -1,0 +1,27 @@
+﻿@model PermohonanSystemMVC.Models.Permohonan
+@{
+    ViewData["Title"] = "Mohon Baru";
+}
+
+<h2>Borang Permohonan</h2>
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label>Tajuk</label>
+        <input asp-for="Tajuk" class="form-control" />
+        <span asp-validation-for="Tajuk" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label>Penerangan</label>
+        <textarea asp-for="Penerangan" class="form-control" rows="4"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label>Lampiran Dokumen (PDF/Gambar)</label>
+        <input type="file" name="Dokumen" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Hantar</button>
+    <a asp-action="Index" class="btn btn-secondary">Kembali</a>
+</form>

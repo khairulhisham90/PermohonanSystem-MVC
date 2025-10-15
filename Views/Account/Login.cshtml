@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Log Masuk";
+}
+
+<h2>Log Masuk</h2>
+
+<form asp-action="Login" method="post">
+    <div class="mb-3">
+        <label>Emel</label>
+        <input name="emel" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Kata Laluan</label>
+        <input name="password" type="password" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Log Masuk</button>
+    <a asp-action="Register" class="btn btn-link">Daftar Akaun Baru</a>
+
+    @if (ViewBag.Message != null)
+    {
+        <p class="text-danger mt-2">@ViewBag.Message</p>
+    }
+</form>

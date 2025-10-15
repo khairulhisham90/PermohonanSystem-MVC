@@ -1,0 +1,64 @@
+﻿@model IEnumerable<PermohonanSystemMVC.Models.Permohonan>
+@{
+    ViewData["Title"] = "Senarai Permohonan";
+}
+@{
+    var role = Context.Session.GetString("UserRole");
+}
+
+<h2>Senarai Permohonan Saya</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Mohon Baru</a>
+    <a asp-controller="Account" asp-action="Logout" class="btn btn-outline-danger float-end">Log Keluar</a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Tajuk</th>
+            <th>Penerangan</th>
+            <th>Tarikh</th>
+            @if (role == "ADMIN")
+            {
+                <th>Pengguna</th>
+            }
+            <th>Dokumen</th>
+            <th>Tindakan</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Tajuk</td>
+                <td>@item.Penerangan</td>
+                <td>@item.Tarikh.ToString("dd/MM/yyyy HH:mm")</td>
+                @if (role == "ADMIN")
+                {
+                    <td>@item.User?.Nama (@item.User?.Emel)</td>
+                    <!-- 🧩 ambil dari join -->
+                    }
+                <td>
+                    @if (!string.IsNullOrEmpty(item.DokumenPath))
+                    {
+                        <a href="@item.DokumenPath" target="_blank">Lihat</a>
+                    }
+                    else
+                    {
+                        <span>-</span>
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

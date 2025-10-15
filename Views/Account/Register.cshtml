@@ -1,0 +1,29 @@
+﻿@model PermohonanSystemMVC.Models.User
+@{
+    ViewData["Title"] = "Daftar Akaun";
+}
+
+<h2>Daftar Akaun Baru</h2>
+
+<form asp-action="Register" method="post">
+    <div class="mb-3">
+        <label>Nama</label>
+        <input asp-for="Nama" class="form-control" />
+        <span asp-validation-for="Nama" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label>Emel</label>
+        <input asp-for="Emel" class="form-control" />
+        <span asp-validation-for="Emel" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label>Kata Laluan</label>
+        <input asp-for="Password" type="password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Daftar</button>
+    <a asp-action="Login" class="btn btn-link">Sudah ada akaun?</a>
+</form>

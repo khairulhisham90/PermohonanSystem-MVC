@@ -1,0 +1,41 @@
+﻿@model PermohonanSystemMVC.Models.Permohonan
+@{
+    ViewData["Title"] = "Edit Permohonan";
+}
+
+<h2>Edit Permohonan</h2>
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label>Tajuk</label>
+        <input asp-for="Tajuk" class="form-control" />
+        <span asp-validation-for="Tajuk" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label>Penerangan</label>
+        <textarea asp-for="Penerangan" class="form-control" rows="4"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label>Dokumen Sedia Ada:</label><br />
+        @if (!string.IsNullOrEmpty(Model.DokumenPath))
+        {
+            <a href="@Model.DokumenPath" target="_blank">@Model.DokumenPath</a>
+        }
+        else
+        {
+            <span class="text-muted">Tiada fail</span>
+        }
+    </div>
+
+    <div class="mb-3">
+        <label>Muat Naik Dokumen Baru (optional)</label>
+        <input type="file" name="Dokumen" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Simpan</button>
+    <a asp-action="Index" class="btn btn-secondary">Kembali</a>
+</form>

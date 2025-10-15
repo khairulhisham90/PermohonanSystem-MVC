@@ -1,0 +1,40 @@
+## Ignore Visual Studio build folders
+bin/
+obj/
+.vs/
+
+## Ignore user-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Ignore publish folders
+**/publish/
+**/PublishProfiles/
+
+## Ignore logs and temp
+*.log
+*.tmp
+*.temp
+*.bak
+
+## Ignore uploads and attachments
+wwwroot/uploads/
+
+## Ignore sensitive configuration files
+appsettings.*.json
+!appsettings.json   # keep main config but scrub passwords
+secrets.json
+
+## Ignore database or backup files
+*.db
+*.mdf
+*.ldf
+
+## Ignore node/npm stuff if ever used
+node_modules/
+
+## Ignore IDE files
+.idea/
+.vscode/

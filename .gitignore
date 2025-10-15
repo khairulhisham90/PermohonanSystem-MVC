@@ -416,3 +416,18 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+# ===============================
+# Custom Ignore Rules (ASP.NET Core)
+# ===============================
+
+# Ignore upload folders (public user files)
+wwwroot/uploads/
+
+# Ignore sensitive config files
+appsettings.*.json
+!appsettings.json   # keep main config but scrub passwords
+secrets.json
+
+# Ignore database and backup files
+*.db
+*.bak
